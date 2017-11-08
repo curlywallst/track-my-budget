@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import ReactTable from 'react-table'
 import _ from "lodash";
 
-
-
 const ExpensesList = ({ expenses }) => {
   const renderExpenses = expenses
   renderExpenses.map(expense =>
