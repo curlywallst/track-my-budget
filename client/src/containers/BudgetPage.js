@@ -2,6 +2,9 @@ import React, { Component }  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
+import { fetchExpenses } from '../actions';
+import * as actions from '../actions/index.js'
+import { bindActionCreators } from 'redux'
 
 class BudgetPage extends Component {
   constructor(props) {
@@ -10,6 +13,11 @@ class BudgetPage extends Component {
     this.state = {
       expenses: []
     }
+  }
+
+  componentDidMount() {
+      console.log('in component did mount')
+      this.props.actions.fetchExpenses()
   }
 
   render() {
@@ -33,10 +41,14 @@ class BudgetPage extends Component {
   }
 };
 
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
 const mapStateToProps = state => {
   return {
     expenses: state.expenses
   };
 }
 
-export default connect(mapStateToProps, null)(BudgetPage);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetPage);
