@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ExpensesList = ({ income }) => {
+const IncomeList = ({ income }) => {
   var renderIncome=<div></div>
   if (Object.keys(income).length > 0) {
   renderIncome=
@@ -18,4 +18,4 @@ const ExpensesList = ({ income }) => {
   );
 };
 
-export default ExpensesList;
+export default IncomeList;

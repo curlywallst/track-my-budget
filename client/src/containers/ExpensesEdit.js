@@ -26,6 +26,7 @@ class ExpensesEdit extends Component {
     event.preventDefault();
     const annualAmount = this.state.monthlyAmount * 12;
     const expenseAttributes = {
+      id: this.state.id,
       name: this.state.name,
       category: this.state.category,
       monthlyAmount: this.state.monthlyAmount,
@@ -65,8 +66,9 @@ class ExpensesEdit extends Component {
             onChange={this.handleOnChange}
             placeholder="Monthly Amount"
             value={this.state.monthlyAmount}/>
-
-          <input className="App-form" style={{background: '#86B404'}} type="submit" value="Edit Expense" />
+          <br></br>
+          <input className="App-form" name='edit' style={{background: '#86B404'}} type="submit" value="Edit Expense" />
+          <input className="App-form" name='delete' style={{background: '#86B404'}} type="submit" value="Delete Expense" />
         </form>
       </div>
     );

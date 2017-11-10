@@ -26,7 +26,6 @@ class ExpensesNew extends Component {
     event.preventDefault();
     const annualAmount = this.state.monthlyAmount * 12;
     const expenseAttributes = {
-      id: this.state.id,
       name: this.state.name,
       category: this.state.category,
       monthlyAmount: this.state.monthlyAmount,

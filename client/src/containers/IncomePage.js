@@ -16,7 +16,6 @@ class IncomePage extends Component {
 
   render() {
     const { match } = this.props
-    console.log('in income component did mount')
 
     return (
       <div>
@@ -29,7 +28,6 @@ class IncomePage extends Component {
               <h2>Income</h2>
               <br></br>
               <IncomeList income={this.props.income}/>
-              <Link to={`/income/edit`} >Edit Income</Link>
             </div>
           )}/>
         </Switch>

@@ -7,7 +7,6 @@ class ExpensesController < ApplicationController
       )
   end
 
-
   def create
     expense = Expense.create(expense_params)
 
@@ -18,18 +17,24 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def destroy
-    expense = Expense.find_by(id: expense_params[:id])
-
-  if task.delete
-    render json: { message: "expenxe deleted", success: 'ok'}
-  else
-    render json: {}, status: 412
+  def update
+    expense = Expense.find(expense_params[:id])
+    if expense.save
+      expense.update(expense_params)
+      render json: Expense.all, status:201
+    else
+      render json: {}, status: 400
+    end
   end
 
-end
-
-
+  def destroy
+    expense = Expense.find(expense_params[:id])
+    if task.delete
+      render json: { message: "expense deleted", success: 'ok'}
+    else
+      render json: Expense.all, status: 412
+    end
+  end
 
 
   private
