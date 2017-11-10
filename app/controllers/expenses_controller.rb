@@ -10,15 +10,21 @@ class ExpensesController < ApplicationController
 
 
   def create
-    binding.pry
-    expense = Expense.create(params)
-    render json: {}, status: 400
-    
+
+    expense = Expense.create(expense_params)
+
     if expense.valid?
       render json: expense, status: 201
     else
       render json: {}, status: 400
     end
+  end
+
+
+
+  private
+  def expense_params
+    params.require(:expense).permit(:name, :category, :monthlyAmount, :annualAmount, :id)
   end
 end
 

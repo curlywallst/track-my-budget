@@ -2,7 +2,6 @@ import React, { Component }  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
-import { fetchExpenses } from '../actions';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 
@@ -16,6 +15,7 @@ class BudgetPage extends Component {
   }
 
   componentDidMount() {
+    if(this.props.expenses.length === 0)
       console.log('in component did mount')
       this.props.actions.fetchExpenses()
   }
@@ -26,13 +26,11 @@ class BudgetPage extends Component {
     return (
       <div>
         <Switch>
-          {/* <Route path={`${match.url}/:expenseId`} component={ExpensesShow}/> */}
-          {/* <Route path={`${match.url}/:incomeId`} component={IncomeShow}/> */}
           <Route exact path={match.url} render={() => (
             <div>
               <h2>Expenses</h2>
               <ExpensesList expenses={expenses} />
-              <p>Please Click Expenses to go to Expense Page</p>
+              <h2>Income</h2>
             </div>
           )}/>
         </Switch>

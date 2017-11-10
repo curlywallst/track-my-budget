@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import expenses from './expenses';
-import income from './income'
+import expensesReducer from './expenses';
+import incomeReducer from './income'
 
 export default combineReducers({
-  expenses, income
+  expenses: expensesReducer, income: incomeReducer
 });

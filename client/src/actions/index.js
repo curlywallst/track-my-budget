@@ -1,12 +1,5 @@
 import fetch from 'isomorphic-fetch';
 
-// export function addExpenses(expense) {
-//   return {
-//     type: 'ADD_EXPENSE',
-//     expense
-//   };
-// };
-
 export function fetchExpenses() {
   return function(dispatch){
     dispatch({ type: 'LOADING_EXPENSES' })
@@ -15,22 +8,36 @@ export function fetchExpenses() {
       .then(responseJson => {dispatch({ type: 'STOP_LOADING_EXPENSES', expenses: responseJson })});
     }
   };
+  export function fetchIncome() {
+    return function(dispatch){
+      dispatch({ type: 'LOADING_INCOME' })
+      return fetch('/api/income')
+        .then(response => {return response.json()})
+        .then(responseJson => {dispatch({ type: 'STOP_LOADING_INCOME', income: responseJson })});
+      }
+    };
 
   export function addExpenses(expense) {
     return (dispatch) => {
       dispatch({ type: 'ADD_EXPENSES' });
       return fetch('/api/expenses', {
         method:'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
+          // expense: {
           name:expense.name,
           category: expense.category,
           id:expense.id,
           monthlyAmount: expense.monthlyAmount,
           annualAmount: expense.annualAmount
+          // }
         })
       })
       .then((res) => res.json())
-      .then((responseJson) => {dispatch({ type: 'SUCCESSFULLY_CREATED_EXPENSE', payload: responseJson.expense })
+      .then((responseJson) => {dispatch({ type: 'SUCCESSFULLY_CREATED_EXPENSE', payload: responseJson })
         return responseJson;
       })
     }
@@ -93,3 +100,11 @@ export function fetchExpenses() {
 //     .then((res) => res.json())
 //     .then((data) => console.log(data))
 //   }
+
+
+// export function addExpenses(expense) {
+//   return {
+//     type: 'ADD_EXPENSE',
+//     expense
+//   };
+// };

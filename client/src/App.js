@@ -9,6 +9,7 @@ import BudgetPage from './containers/BudgetPage';
 import ExpensesPage from './containers/ExpensesPage';
 import IncomePage from './containers/IncomePage'
 import ExpensesNew from './containers/ExpensesNew'
+import IncomeNew from './containers/IncomeNew'
 
 
 class App extends Component {
@@ -27,9 +28,11 @@ class App extends Component {
           </div>
           <div className="App-body">
             <Route exact path='/budget' component={BudgetPage}/>
-            <Route path='/budget/expenses' component={ExpensesPage}/>
+            <Route exact path='budget/income' component={IncomePage}/>
+            <Route path='/budget/income/new' component={IncomeNew}/>
+            <Route exact path='/budget/expenses' component={ExpensesPage}/>
             <Route path='/budget/expenses/new' component={ExpensesNew}/>
-            {/* <Route path='budget/income' component={IncomePage}/> */}
+
           </div>
         </div>
       </Router>

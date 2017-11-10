@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
 import ExpensesNew from './ExpensesNew';
-import { fetchExpenses } from '../actions';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom';
 
 class ExpensesPage extends Component {
   constructor(props) {
@@ -22,20 +22,22 @@ class ExpensesPage extends Component {
   }
 
   render() {
-    const { match, expenses } = this.props
+    const { match } = this.props
 
     return (
       <div>
         <Switch>
-          {/* <Route path={`${match.url}/:expenseId`} component={ExpensesShow}/> */}
           <Route exact path={match.url} render={() => (
             <div>
               <br></br>
               <ExpensesNew />
               <h2>Expenses</h2>
               <ExpensesList expenses={this.props.expenses} />
+              <br></br>
+              <Link to={`/expenses/edit`} >Edit Expenses</Link>
             </div>
           )}/>
+
         </Switch>
       </div>
     )

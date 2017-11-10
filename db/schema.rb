@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106222441) do
+ActiveRecord::Schema.define(version: 20171110003855) do
 
   create_table "expenses", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20171106222441) do
     t.integer "annualAmount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.integer "earnedIncome"
+    t.integer "netInvestedAssets"
+    t.integer "taxRate"
+    t.integer "roi"
   end
 
 end

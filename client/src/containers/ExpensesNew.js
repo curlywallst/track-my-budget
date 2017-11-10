@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addExpenses } from '../actions';
-import uuid from 'uuid';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 
@@ -26,14 +24,12 @@ class ExpensesNew extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const id = uuid();
     const annualAmount = this.state.monthlyAmount * 12;
     const expenseAttributes = {
       name: this.state.name,
       category: this.state.category,
       monthlyAmount: this.state.monthlyAmount,
       annualAmount: annualAmount,
-      id: id
     }
     this.props.actions.addExpenses(expenseAttributes);
   }

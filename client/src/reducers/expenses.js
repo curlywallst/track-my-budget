@@ -1,11 +1,11 @@
-export default function manageExpenses(state = [], action){
+export default function expenseReducer(state = [], action){
   switch (action.type) {
 
     case 'ADD_EXPENSES':
       return [ ...state, action.expense ];
 
     case 'SUCCESSFULLY_CREATED_EXPENSE':
-      return [ ...state, action.expense ];
+      return [...state.slice(0, state.length), action.payload]
 
     case 'LOADING_EXPENSES':
       return state

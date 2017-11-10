@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ReactTable from 'react-table'
 import _ from "lodash";
 
 const ExpensesList = ({ expenses }) => {
   const renderExpenses = expenses
-  renderExpenses.map(expense =>
-        expense.name = <Link key={expense.id} to={`/expenses/${expense.id}`}>{expense.name}</Link>
-      );
+  // renderExpenses.map(expense =>
+  //       expense.name = <Link key={expense.id} to={`/expenses/${expense.id}`} >{expense.name}</Link>
+  //     );
+
   const columns = [{
     Header: 'Name',
     accessor: 'name' // String-based value accessors!
@@ -45,7 +45,10 @@ const ExpensesList = ({ expenses }) => {
               desc: true
             }
           ]}
-        defaultPageSize={10}
+          defaultPageSize={20}
+        style={{
+          height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
+        }}
         className="-striped -highlight"
       />
     </div>
