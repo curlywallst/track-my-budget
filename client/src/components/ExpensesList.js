@@ -3,12 +3,18 @@ import ReactTable from 'react-table'
 import _ from "lodash";
 
 const ExpensesList = ({ expenses }) => {
-  const renderExpenses = expenses
+  var renderExpenses = []
+  expenses.map(expense =>
+    (expense !== undefined)? renderExpenses.push(expense): "")
+
   // renderExpenses.map(expense =>
   //       expense.name = <Link key={expense.id} to={`/expenses/${expense.id}`} >{expense.name}</Link>
   //     );
 
   const columns = [{
+    Header: 'Id',
+    accessor: 'id' // String-based value accessors!
+  },{
     Header: 'Name',
     accessor: 'name' // String-based value accessors!
   }, {

@@ -35,7 +35,7 @@ const NavBar = props => {
 
       <NavLink className="App-nav-link"
         activeStyle={{ color: '#86B404' }}
-        to="/budget/edit"
+        to="/settings"
       >
         Settings
       </NavLink>

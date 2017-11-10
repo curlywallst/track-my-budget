@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
 import ExpensesNew from './ExpensesNew';
+import ExpensesEdit from './ExpensesEdit';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom';
@@ -17,7 +18,7 @@ class ExpensesPage extends Component {
   }
 
   componentDidMount() {
-      console.log('in component did mount')
+      console.log('in expenses component did mount')
       this.props.actions.fetchExpenses()
   }
 
@@ -34,7 +35,7 @@ class ExpensesPage extends Component {
               <h2>Expenses</h2>
               <ExpensesList expenses={this.props.expenses} />
               <br></br>
-              <Link to={`/expenses/edit`} >Edit Expenses</Link>
+              <ExpensesEdit />
             </div>
           )}/>
 

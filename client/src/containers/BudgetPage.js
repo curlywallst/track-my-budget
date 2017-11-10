@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
+import IncomeList from '../components/IncomeList';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 
@@ -10,18 +11,19 @@ class BudgetPage extends Component {
     super(props);
 
     this.state = {
-      expenses: []
+      expenses: [],
+      income: []
     }
   }
 
   componentDidMount() {
-    if(this.props.expenses.length === 0)
-      console.log('in component did mount')
+      console.log('in budget component did mount')
       this.props.actions.fetchExpenses()
+      // this.props.action.fetchIncome()
   }
 
   render() {
-    const { match, expenses } = this.props
+    const { match, expenses, income } = this.props
 
     return (
       <div>
@@ -31,6 +33,7 @@ class BudgetPage extends Component {
               <h2>Expenses</h2>
               <ExpensesList expenses={expenses} />
               <h2>Income</h2>
+              <IncomeList income={income}/>
             </div>
           )}/>
         </Switch>
@@ -45,7 +48,8 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = state => {
   return {
-    expenses: state.expenses
+    expenses: state.expenses,
+    income: state.income
   };
 }
 
