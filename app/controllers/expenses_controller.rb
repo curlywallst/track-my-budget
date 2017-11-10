@@ -28,8 +28,9 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
+    puts expense_params
     expense = Expense.find(expense_params[:id])
-    if task.delete
+    if expense.delete
       render json: { message: "expense deleted", success: 'ok'}
     else
       render json: Expense.all, status: 412

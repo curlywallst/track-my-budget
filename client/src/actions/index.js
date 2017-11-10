@@ -64,7 +64,7 @@ export function fetchExpenses() {
   export function deleteExpenses(expense) {
     return (dispatch) => {
       dispatch({ type: 'DELETE_EXPENSES' });
-      return fetch(`/api/expenses${expense.id}`, {
+      return fetch(`/api/expenses/${expense.id}`, {
         method:'DELETE',
         headers: {
           'Accept': 'application/json',
