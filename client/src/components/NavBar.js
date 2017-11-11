@@ -33,13 +33,6 @@ const NavBar = props => {
         Income
       </NavLink>
 
-      <NavLink className="App-nav-link"
-        activeStyle={{ color: '#86B404' }}
-        to="/settings"
-      >
-        Settings
-      </NavLink>
-
     </div>
   );
 }

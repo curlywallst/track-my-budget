@@ -3,8 +3,8 @@ class CreateExpenses < ActiveRecord::Migration[5.1]
     create_table :expenses do |t|
       t.string :name
       t.string :category
-      t.integer :monthlyAmount
-      t.integer :annualAmount
+      t.float :monthlyAmount, precision: 2
+      t.float :annualAmount, precision: 2
 
       t.timestamps
     end

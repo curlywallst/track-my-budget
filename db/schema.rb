@@ -15,17 +15,17 @@ ActiveRecord::Schema.define(version: 20171110003855) do
   create_table "expenses", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.integer "monthlyAmount"
-    t.integer "annualAmount"
+    t.float "monthlyAmount"
+    t.float "annualAmount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.integer "earnedIncome"
-    t.integer "netInvestedAssets"
-    t.integer "taxRate"
-    t.integer "roi"
+    t.float "earnedIncome"
+    t.float "netInvestedAssets"
+    t.float "taxRate"
+    t.float "roi"
   end
 
 end

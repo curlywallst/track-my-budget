@@ -9,8 +9,9 @@ const ExpensesList = ({ expenses }) => {
 
   const columns = [{
     Header: 'Id',
+    width: 75,
     accessor: 'id' // String-based value accessors!
-  },{
+  }, {
     Header: 'Name',
     accessor: 'name' // String-based value accessors!
   }, {
@@ -19,19 +20,22 @@ const ExpensesList = ({ expenses }) => {
   }, {
     Header: 'Monthly Amount',
     accessor: 'monthlyAmount',
+    width: 200,
     Footer: (
               <span>
                 <strong>Total:</strong>{" "}
-                {_.sum(_.map(renderExpenses, d => parseInt(d.monthlyAmount, 10)))}
+                {_.sum(_.map(renderExpenses, d => parseInt(d.monthlyAmount, 10))).formatMoney(2)}
               </span>
               )
   }, {
     Header: 'Annual Amount',
     accessor: 'annualAmount',
+    width: 200,
+    style: {},
     Footer: (
               <span>
                 <strong>Total:</strong>{" "}
-                {_.sum(_.map(renderExpenses, d => d.annualAmount))}
+                {_.sum(_.map(renderExpenses, d => d.annualAmount)).formatMoney(2)}
               </span>
               )
   }]
@@ -43,11 +47,11 @@ const ExpensesList = ({ expenses }) => {
         columns={columns}
         defaultSorted={[
             {
-              id: "category",
-              desc: true
+              id: "id",
+              asc: true
             }
           ]}
-        defaultPageSize={20}
+        defaultPageSize={100}
         style={{
           height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
         }}

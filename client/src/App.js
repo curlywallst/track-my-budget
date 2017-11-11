@@ -5,7 +5,6 @@ import './App.css';
 import 'react-table/react-table.css'
 import NavBar from './components/NavBar'
 import BudgetAbout from './components/BudgetAbout';
-import Settings from './components/Settings';
 import BudgetPage from './containers/BudgetPage';
 import ExpensesPage from './containers/ExpensesPage';
 import IncomePage from './containers/IncomePage'
@@ -33,7 +32,6 @@ class App extends Component {
             <Route path='/budget/income/edit' component={IncomeEdit}/>
             <Route exact path='/budget/expenses' component={ExpensesPage}/>
             <Route path='/budget/expenses/new' component={ExpensesNew}/>
-            <Route path='/settings' component={Settings}/>
           </div>
         </div>
       </Router>

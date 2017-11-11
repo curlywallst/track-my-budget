@@ -23,7 +23,6 @@ class IncomeEdit extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-
     const incomeAttributes = {id: 1}
     this.state.earnedIncome !== ""? incomeAttributes['earnedIncome'] = this.state.earnedIncome : null
     this.state.netInvestedAssets !== ""? incomeAttributes['netInvestedAssets'] = this.state.netInvestedAssets : null
@@ -31,12 +30,14 @@ class IncomeEdit extends Component {
     this.state.roi !== ""? incomeAttributes['roi'] = this.state.roi : null
 
     this.props.actions.editIncome(incomeAttributes);
-    this.setState = {
+
+    this.setState({
       earnedIncome: '',
       netInvestedAssets: '',
       taxRate: '',
       roi: '',
-    };
+      id: '',
+    })
   }
 
   render() {
@@ -56,7 +57,7 @@ class IncomeEdit extends Component {
             name="netInvestedAssets"
             type="text"
             onChange={this.handleOnChange}
-            placeholder="Net Investment Assets"
+            placeholder="Net Invested Assets"
             value={this.state.netInvestedAssets}/>
 
           <input className="App-form"

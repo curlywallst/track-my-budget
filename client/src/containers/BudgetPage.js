@@ -19,7 +19,7 @@ class BudgetPage extends Component {
   componentDidMount() {
       console.log('in budget component did mount')
       this.props.actions.fetchExpenses()
-      // this.props.action.fetchIncome()
+      this.props.actions.fetchIncome()
   }
 
   render() {

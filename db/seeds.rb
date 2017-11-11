@@ -4,7 +4,7 @@ Expense.create(name: "Babysitter", category: "Childcare", monthlyAmount: "1000",
 Expense.create(name: "Cellphone", category: "Services", monthlyAmount: "135", annualAmount: "1620")
 Expense.create(name: "Comcast", category: "Services", monthlyAmount: "205", annualAmount: "2460")
 
-Income.create(earnedIncome: "150000", netInvestedAssets: "1000000", taxRate: ".35", roi: "4.0")
+Income.create(earnedIncome: "0", netInvestedAssets: "0", taxRate: ".0", roi: "0")
 
 
 # #!/usr/bin/env ruby
