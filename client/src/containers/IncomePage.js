@@ -10,6 +10,10 @@ class IncomePage extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      income: this.props.income
+    }
+
   }
 
   componentDidMount() {
@@ -19,7 +23,6 @@ class IncomePage extends Component {
 
   render() {
     const { match } = this.props
-    // console.log(this.props)
     return (
       <div>
         <Switch>

@@ -8,10 +8,10 @@ class IncomeEdit extends Component {
     super(props);
 
     this.state = {
-      earnedIncome: this.props.earnedIncome,
-      netInvestedAssets: this.props.netInvestedAssets,
-      taxRate: this.props.taxRate,
-      roi: this.props.roi,
+      earnedIncome: '',
+      netInvestedAssets: '',
+      taxRate: '',
+      roi: '',
     };
   }
 
@@ -23,18 +23,24 @@ class IncomeEdit extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const incomeAttributes = {
-      earnedIncome: this.state.earnedIncome,
-      netInvestedAssets: this.state.netInvestedAssets,
-      taxRate: this.state.taxRate,
-      roi: this.state.roi,
-    }
+
+    const incomeAttributes = {id: 1}
+    this.state.earnedIncome !== ""? incomeAttributes['earnedIncome'] = this.state.earnedIncome : null
+    this.state.netInvestedAssets !== ""? incomeAttributes['netInvestedAssets'] = this.state.netInvestedAssets : null
+    this.state.taxRate !== ""? incomeAttributes['taxRate'] = this.state.taxRate : null
+    this.state.roi !== ""? incomeAttributes['roi'] = this.state.roi : null
+
     this.props.actions.editIncome(incomeAttributes);
+    this.setState = {
+      earnedIncome: '',
+      netInvestedAssets: '',
+      taxRate: '',
+      roi: '',
+    };
   }
 
   render() {
     const incomeFields = this.props.income
-    console.log(incomeFields)
     if (incomeFields !== undefined) {
     return (
       <div>
@@ -43,28 +49,28 @@ class IncomeEdit extends Component {
             name="earnedIncome"
             type="text"
             onChange={this.handleOnChange}
-            placeholder={incomeFields.earnedIncome}
+            placeholder="Earned Income"
             value={this.state.earnedIncome}/>
 
           <input className="App-form"
             name="netInvestedAssets"
             type="text"
             onChange={this.handleOnChange}
-            placeholder={incomeFields.netInvestedAssets}
+            placeholder="Net Investment Assets"
             value={this.state.netInvestedAssets}/>
 
           <input className="App-form"
             name="taxRate"
             type="text"
             onChange={this.handleOnChange}
-            placeholder={incomeFields.taxRate}
+            placeholder="Tax Rate"
             value={this.state.taxRate}/>
 
             <input className="App-form"
               name="roi"
               type="text"
               onChange={this.handleOnChange}
-              placeholder={incomeFields.roi}
+              placeholder="Return On Investment"
               value={this.state.roi}/>
 
           <input className="App-form" style={{background: '#86B404'}} type="submit" value="Edit Income" />

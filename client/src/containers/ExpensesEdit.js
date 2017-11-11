@@ -25,13 +25,12 @@ class ExpensesEdit extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const annualAmount = this.state.monthlyAmount * 12;
-    const expenseAttributes = {
-      id: this.state.id,
-      name: this.state.name,
-      category: this.state.category,
-      monthlyAmount: this.state.monthlyAmount,
-      annualAmount: annualAmount,
-    }
+    const expenseAttributes = {id: this.state.id}
+    this.state.name !== ""? expenseAttributes['name'] = this.state.name : null
+    this.state.category !== ""? expenseAttributes['category'] = this.state.category : null
+    this.state.monthlyAmount !== ""? expenseAttributes['monthlyAmount'] = this.state.monthlyAmount : null
+    this.state.annualAmount !== ""? expenseAttributes['annualAmount'] = this.state.annualAmount : null
+
     this.props.actions.editExpenses(expenseAttributes)
     this.setState({
       name: '',
