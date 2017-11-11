@@ -28,7 +28,6 @@ class ExpensesDelete extends Component {
   render() {
     return (
       <div>
-        <br></br>
         <form  onSubmit={this.handleOnSubmit.bind(this)} >
           <input className="App-form"
             name="id"

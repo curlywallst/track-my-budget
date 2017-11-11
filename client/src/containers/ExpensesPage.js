@@ -31,12 +31,18 @@ class ExpensesPage extends Component {
           <Route exact path={match.url} render={() => (
             <div>
               <br></br>
-              <ExpensesNew />
-              <h2>Expenses</h2>
+              <label><strong>To Add Expense: </strong>Complete all fields then click Add Expense button:
+              <ExpensesNew /></label>
+              <br></br>
+              <label><h2 style={{"display": "inline"}}>Expenses</h2>:   Click on any column heading to sort by that column. Second click reverses sort order.</label>
+              <p style={{"display": "block"}}></p>
               <ExpensesList expenses={this.props.expenses} />
               <br></br>
-              <ExpensesEdit />
-              <ExpensesDelete />
+              <label><strong>To Edit: </strong>Enter Expense Id any and complete any field you wish to change then click Edit Expense button:
+              <ExpensesEdit /></label>
+              <br></br>
+              <label><strong>To Delete: </strong>Enter Expense Id then click Delete Expense button:
+              <ExpensesDelete /></label>
             </div>
           )}/>
 

@@ -54,18 +54,19 @@ class IncomeEdit extends Component {
             value={this.state.earnedIncome}/>
 
           <input className="App-form"
-            name="netInvestedAssets"
-            type="text"
-            onChange={this.handleOnChange}
-            placeholder="Net Invested Assets"
-            value={this.state.netInvestedAssets}/>
-
-          <input className="App-form"
             name="taxRate"
             type="text"
             onChange={this.handleOnChange}
             placeholder="Tax Rate"
             value={this.state.taxRate}/>
+            <p></p>
+
+          <input className="App-form"
+            name="netInvestedAssets"
+            type="text"
+            onChange={this.handleOnChange}
+            placeholder="Net Invested Assets"
+            value={this.state.netInvestedAssets}/>
 
             <input className="App-form"
               name="roi"
@@ -73,7 +74,7 @@ class IncomeEdit extends Component {
               onChange={this.handleOnChange}
               placeholder="Return On Investment"
               value={this.state.roi}/>
-
+              <p></p>
           <input className="App-form" style={{background: '#86B404'}} type="submit" value="Edit Income" />
         </form>
       </div>

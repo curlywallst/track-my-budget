@@ -13,7 +13,6 @@ class IncomePage extends Component {
     this.state = {
       income: this.props.income
     }
-
   }
 
   componentDidMount() {
@@ -29,9 +28,12 @@ class IncomePage extends Component {
           <Route path={match.url} render={() => (
             <div>
               <br></br>
-              <IncomeEdit income={this.props.income[0]} />
-              <h2>Income</h2>
+              <label><span><strong>To Edit: </strong>Complete any field you wish to change then click Edit Income button:</span>
+              <p></p>
+              <IncomeEdit income={this.props.income[0]} /></label>
               <br></br>
+              <br></br>
+              <h2>Income</h2>
               <IncomeList income={this.props.income}/>
             </div>
           )}/>
