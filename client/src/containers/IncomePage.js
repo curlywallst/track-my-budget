@@ -3,11 +3,14 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router-dom';
-import IncomeNew from './IncomeNew';
+import IncomeEdit from './IncomeEdit';
 import IncomeList from '../components/IncomeList'
 
 class IncomePage extends Component {
+  constructor(props) {
+    super(props);
+
+  }
 
   componentDidMount() {
       console.log('in income component did mount')
@@ -16,15 +19,14 @@ class IncomePage extends Component {
 
   render() {
     const { match } = this.props
-
+    // console.log(this.props)
     return (
       <div>
         <Switch>
-          {/* <Route path={`${match.url}/:expenseId`} component={ExpensesShow}/> */}
           <Route path={match.url} render={() => (
             <div>
               <br></br>
-              <IncomeNew />
+              <IncomeEdit income={this.props.income[0]} />
               <h2>Income</h2>
               <br></br>
               <IncomeList income={this.props.income}/>

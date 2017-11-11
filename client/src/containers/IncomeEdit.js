@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 
-class IncomeNew extends Component {
+class IncomeEdit extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      earnedIncome: '',
-      netInvestedAssets: '',
-      taxRate: '',
-      roi: '',
-      id: '',
+      earnedIncome: this.props.earnedIncome,
+      netInvestedAssets: this.props.netInvestedAssets,
+      taxRate: this.props.taxRate,
+      roi: this.props.roi,
     };
   }
 
@@ -24,17 +23,19 @@ class IncomeNew extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // const annualAmount = this.state.monthlyAmount * 12;
     const incomeAttributes = {
       earnedIncome: this.state.earnedIncome,
       netInvestedAssets: this.state.netInvestedAssets,
       taxRate: this.state.taxRate,
       roi: this.state.roi,
     }
-    this.props.actions.addIncome(incomeAttributes);
+    this.props.actions.editIncome(incomeAttributes);
   }
 
   render() {
+    const incomeFields = this.props.income
+    console.log(incomeFields)
+    if (incomeFields !== undefined) {
     return (
       <div>
         <form  onSubmit={this.handleOnSubmit.bind(this)} >
@@ -42,39 +43,39 @@ class IncomeNew extends Component {
             name="earnedIncome"
             type="text"
             onChange={this.handleOnChange}
-            placeholder="Earned Income"
+            placeholder={incomeFields.earnedIncome}
             value={this.state.earnedIncome}/>
 
           <input className="App-form"
             name="netInvestedAssets"
             type="text"
             onChange={this.handleOnChange}
-            placeholder="Net Invested Assets"
+            placeholder={incomeFields.netInvestedAssets}
             value={this.state.netInvestedAssets}/>
 
           <input className="App-form"
             name="taxRate"
             type="text"
             onChange={this.handleOnChange}
-            placeholder="Tax Rate"
+            placeholder={incomeFields.taxRate}
             value={this.state.taxRate}/>
 
             <input className="App-form"
               name="roi"
               type="text"
               onChange={this.handleOnChange}
-              placeholder="Assumed Return On Investment"
+              placeholder={incomeFields.roi}
               value={this.state.roi}/>
 
-          <input className="App-form" style={{background: '#86B404'}} type="submit" value="Enter Income" />
+          <input className="App-form" style={{background: '#86B404'}} type="submit" value="Edit Income" />
         </form>
       </div>
     );
-  }
+  } else {return null}}
 }
 
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export default connect(null, mapDispatchToProps)(IncomeNew);
+export default connect(null, mapDispatchToProps)(IncomeEdit);

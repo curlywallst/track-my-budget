@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
 import ExpensesNew from './ExpensesNew';
 import ExpensesEdit from './ExpensesEdit';
+import ExpensesDelete from './ExpensesDelete'
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router-dom';
 
 class ExpensesPage extends Component {
   constructor(props) {
@@ -36,6 +36,7 @@ class ExpensesPage extends Component {
               <ExpensesList expenses={this.props.expenses} />
               <br></br>
               <ExpensesEdit />
+              <ExpensesDelete />
             </div>
           )}/>
 

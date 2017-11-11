@@ -51,7 +51,7 @@ const ExpensesList = ({ expenses }) => {
               desc: true
             }
           ]}
-          defaultPageSize={20}
+        defaultPageSize={20}
         style={{
           height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
         }}

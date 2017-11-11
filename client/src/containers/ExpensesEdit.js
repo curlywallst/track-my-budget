@@ -32,9 +32,14 @@ class ExpensesEdit extends Component {
       monthlyAmount: this.state.monthlyAmount,
       annualAmount: annualAmount,
     }
-    event.target.name === 'editButton'?
-      this.props.actions.editExpenses(expenseAttributes) :
-      this.props.actions.deleteExpenses(expenseAttributes)
+    this.props.actions.editExpenses(expenseAttributes)
+    this.setState({
+      name: '',
+      category: '',
+      monthlyAmount: '',
+      annualAmount: '',
+      id: '',
+    })
   }
 
   render() {
@@ -69,8 +74,7 @@ class ExpensesEdit extends Component {
             placeholder="Monthly Amount"
             value={this.state.monthlyAmount}/>
           <br></br>
-          <input className="App-form" name='editButton' style={{background: '#86B404'}} type="submit" value="Edit Expense" />
-          <input className="App-form" name='deleteButton' style={{background: '#86B404'}} type="submit" value="Delete Expense" />
+          <input className="App-form" style={{background: '#86B404'}} type="submit" value="Edit Expense" />
         </form>
       </div>
     );

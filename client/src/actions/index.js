@@ -61,17 +61,17 @@ export function fetchExpenses() {
     }
   }
 
-  export function deleteExpenses(expense) {
+  export function deleteExpenses(id) {
     return (dispatch) => {
       dispatch({ type: 'DELETE_EXPENSES' });
-      return fetch(`/api/expenses/${expense.id}`, {
+      return fetch(`/api/expenses/${id}`, {
         method:'DELETE',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          id: expense.id
+          id: id
         })
       })
       .then((res) => res.json())

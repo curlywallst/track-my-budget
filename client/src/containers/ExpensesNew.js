@@ -32,6 +32,12 @@ class ExpensesNew extends Component {
       annualAmount: annualAmount,
     }
     this.props.actions.addExpenses(expenseAttributes);
+    this.setState({
+      name: '',
+      category: '',
+      monthlyAmount: '',
+      annualAmount: '',
+    })
   }
 
   render() {
