@@ -7,11 +7,11 @@ const IncomeList = ({ income }) => {
       <div>
         <p>Annual Pre-Tax Earned Income: {income[0].earnedIncome.formatMoney(2)}</p>
         <p>Tax Rate: {income[0].taxRate}%</p>
-        <div><strong>After-Tax Earned Income: </strong>{(income[0].earnedIncome*(1-income[0].taxRate/100)).formatMoney(2)}</div>
+        <div><strong>After-Tax Earned Income: </strong>{(income[0].earnedIncome*(1-income[0].taxRate/100)).formatMoney()}</div>
         <br></br>
         <p>Net Invested Assets: {income[0].netInvestedAssets.formatMoney(2)}</p>
         <p>Assumed Rate of Return on Investments: {income[0].roi}%</p>
-        <div><strong>Before-Tax Investment Returns: </strong>{(income[0].netInvestedAssets*(income[0].roi/100)).formatMoney(2)}</div>
+        <div><strong>Before-Tax Investment Returns: </strong>{formatMoney((income[0].netInvestedAssets*(income[0].roi/100)))}</div>
 
       </div>
     }
@@ -24,15 +24,11 @@ const IncomeList = ({ income }) => {
   );
 };
 
-  Number.prototype.formatMoney = function(c, d, t){
-  var n = this,
-      c = isNaN(c = Math.abs(c)) ? 2 : c,
-      d = d == undefined ? "." : d,
-      t = t == undefined ? "," : t,
-      s = n < 0 ? "-" : "",
-      i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
-      j = (j = i.length) > 3 ? j % 3 : 0;
-     return s + "$" + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+  function formatMoney(n){
+    let i = String(parseInt(n.toFixed(2), 10))
+    let l = i.length
+    let j = (l > 3) ? l % 3 : 0;
+    return "$" + (j ? i.substr(0, j) + "," : "") + i.substr(j).replace(/("."{3})(?=".")/g, "$1,") + ("." + Math.abs(n - i).toFixed(2).slice(2));
    };
 
 export default IncomeList;

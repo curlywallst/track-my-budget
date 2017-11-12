@@ -24,7 +24,7 @@ const ExpensesList = ({ expenses }) => {
     Footer: (
               <span>
                 <strong>Total:</strong>{" "}
-                {_.sum(_.map(renderExpenses, d => parseInt(d.monthlyAmount, 10))).formatMoney(2)}
+                {formatMoney(_.sum(_.map(renderExpenses, d => parseInt(d.monthlyAmount, 10))))}
               </span>
               )
   }, {
@@ -35,7 +35,7 @@ const ExpensesList = ({ expenses }) => {
     Footer: (
               <span>
                 <strong>Total:</strong>{" "}
-                {_.sum(_.map(renderExpenses, d => d.annualAmount)).formatMoney(2)}
+                {formatMoney(_.sum(_.map(renderExpenses, d => d.annualAmount)))}
               </span>
               )
   }]
@@ -60,5 +60,13 @@ const ExpensesList = ({ expenses }) => {
     </div>
   );
 };
+
+function formatMoney(n){
+  let i = String(parseInt(n.toFixed(2), 10))
+  let l = i.length
+  let j = (l > 3) ? l % 3 : 0;
+  return "$" + (j ? i.substr(0, j) + "," : "") + i.substr(j).replace(/("."{3})(?=".")/g, "$1,") + ("." + Math.abs(n - i).toFixed(2).slice(2));
+ };
+
 
 export default ExpensesList;

@@ -19,13 +19,11 @@ export function fetchExpenses() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          // expense: {
           id:expense.id,
           name:expense.name,
           category: expense.category,
           monthlyAmount: expense.monthlyAmount,
           annualAmount: expense.annualAmount
-          // }
         })
       })
       .then((res) => res.json())

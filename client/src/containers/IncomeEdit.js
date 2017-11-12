@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 
+
 class IncomeEdit extends Component {
   constructor (props) {
     super(props);
@@ -24,10 +25,10 @@ class IncomeEdit extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const incomeAttributes = {id: 1}
-    this.state.earnedIncome !== ""? incomeAttributes['earnedIncome'] = this.state.earnedIncome : null
-    this.state.netInvestedAssets !== ""? incomeAttributes['netInvestedAssets'] = this.state.netInvestedAssets : null
-    this.state.taxRate !== ""? incomeAttributes['taxRate'] = this.state.taxRate : null
-    this.state.roi !== ""? incomeAttributes['roi'] = this.state.roi : null
+    if (this.state.earnedIncome !== "") { incomeAttributes['earnedIncome'] = this.state.earnedIncome }
+    if (this.state.netInvestedAssets !== "") {incomeAttributes['netInvestedAssets'] = this.state.netInvestedAssets}
+    if (this.state.taxRate !== "") {incomeAttributes['taxRate'] = this.state.taxRate}
+    if (this.state.roi !== "") {incomeAttributes['roi'] = this.state.roi}
 
     this.props.actions.editIncome(incomeAttributes);
 
