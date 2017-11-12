@@ -5,11 +5,11 @@ const IncomeList = ({ income }) => {
   if (Object.keys(income).length > 0) {
   renderIncome=
       <div>
-        <p>Annual Pre-Tax Earned Income: {income[0].earnedIncome.formatMoney(2)}</p>
+        <p>Annual Pre-Tax Earned Income: {formatMoney(income[0].earnedIncome)}</p>
         <p>Tax Rate: {income[0].taxRate}%</p>
-        <div><strong>After-Tax Earned Income: </strong>{(income[0].earnedIncome*(1-income[0].taxRate/100)).formatMoney()}</div>
+        <div><strong>After-Tax Earned Income: </strong>{formatMoney(income[0].earnedIncome*(1-income[0].taxRate/100))}</div>
         <br></br>
-        <p>Net Invested Assets: {income[0].netInvestedAssets.formatMoney(2)}</p>
+        <p>Net Invested Assets: {formatMoney(income[0].netInvestedAssets)}</p>
         <p>Assumed Rate of Return on Investments: {income[0].roi}%</p>
         <div><strong>Before-Tax Investment Returns: </strong>{formatMoney((income[0].netInvestedAssets*(income[0].roi/100)))}</div>
 
