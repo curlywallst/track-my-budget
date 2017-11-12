@@ -1,24 +1,31 @@
-# README
+# Budget Tacker
+Flatiron school Rails App with a React Redux Front Final Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Track My Budget
 
-Things you may want to cover:
+This is React-Redux Application that allows users to analyze their expenses on a monthly and annual basis and compare that to after-tax earnings and investment income.
 
-* Ruby version
+The application is hooked to a Rails API backend.
 
-* System dependencies
+Installation
 
-* Configuration
+Pull requests are welcome on Github at https://github.com/curlywallst/track-my-budget.
 
-* Database creation
+Usage
 
-* Database initialization
+To run the application:
+In the terminal:
+  $ bundle install
+  $ npm install
+  $ rake start
 
-* How to run the test suite
+Dependencies can be found in the package.json file.
 
-* Services (job queues, cache servers, search engines, etc.)
+Contributing
 
-* Deployment instructions
+Bug reports and pull requests are welcome on GitHub at https://github.com/curlywallst/track-my-budget. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* ...
+
+License
+
+This application was developed under the guidance of Flatiron School on learn.co.
