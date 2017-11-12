@@ -6,7 +6,6 @@ const BudgetAbout = props =>
       <li>Click My Budget to see your current budget including Expenses and Income</li>
       <li>Click Expenses to see and edit your expenses list</li>
       <li>Click Income to see and edit your assets/income</li>
-      <li>Click Setup to set your defaults</li>
   </div>;
 
 export default BudgetAbout;
