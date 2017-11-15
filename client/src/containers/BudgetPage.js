@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
 import IncomeList from '../components/IncomeList';
+import ByCategoryList from '../components/ByCategoryList'
 import NetBudget from '../components/NetBudget'
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
@@ -32,7 +33,7 @@ class BudgetPage extends Component {
           <Route exact path={match.url} render={() => (
             <div>
               <h2>Expenses</h2>
-              <ExpensesList expenses={expenses} />
+              <ByCategoryList expenses={expenses} />
               <h2>Income</h2>
               <IncomeList income={income} expenses={expenses}/>
               <h2>Net Monthly Budget</h2>
