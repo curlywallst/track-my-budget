@@ -12,7 +12,6 @@ const NetBudget = ({ expenses, income }) => {
   var monthlyIncome = (income[0].earnedIncome*(1-income[0].taxRate/100))/12
   renderIncome=
       <div>
-        <br></br>
         <div><strong>Monthly After-Tax Monthly Earned Income:  </strong>{formatMoney(monthlyIncome)}</div>
         <div><strong>Remaining Monthly Budget Amount: </strong>{formatMoney(monthlyIncome-monthlyExpTotal)}</div>
       </div>
