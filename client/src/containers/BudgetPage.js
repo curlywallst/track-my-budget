@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ExpensesList from '../components/ExpensesList';
 import IncomeList from '../components/IncomeList';
+import NetBudget from '../components/NetBudget'
 import * as actions from '../actions/index.js'
 import { bindActionCreators } from 'redux'
 
@@ -33,7 +34,9 @@ class BudgetPage extends Component {
               <h2>Expenses</h2>
               <ExpensesList expenses={expenses} />
               <h2>Income</h2>
-              <IncomeList income={income}/>
+              <IncomeList income={income} expenses={expenses}/>
+              <h2>Net Monthly Budget</h2>
+              <NetBudget income={income} expenses={expenses}/>
             </div>
           )}/>
         </Switch>

@@ -5,7 +5,8 @@ export default function expenseReducer(state = [], action){
       return [ ...state, action.expense ];
 
     case 'SUCCESSFULLY_CREATED_EXPENSE':
-      return [...state.slice(0, state.length), action.payload]
+      return state.concat(action.payload)
+      //[...state.slice(0, state.length), action.payload]
 
     case 'LOADING_EXPENSES':
       return state

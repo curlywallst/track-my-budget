@@ -1,8 +1,11 @@
 import React from 'react';
 
-const IncomeList = ({ income }) => {
+
+const IncomeList = ({ expenses, income }) => {
+
   var renderIncome=<div></div>
   if (Object.keys(income).length > 0) {
+  var monthlyIncome = (income[0].earnedIncome*(1-income[0].taxRate/100))/12
   renderIncome=
       <div>
         <p>Annual Pre-Tax Earned Income: {formatMoney(income[0].earnedIncome)}</p>

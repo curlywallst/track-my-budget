@@ -110,6 +110,18 @@ export function fetchExpenses() {
     }
   }
 
+  // import fetch from 'isomorphic-fetch';
+  //
+  // import * as expensesActions from './expensesActions';
+  // import * as incomeActions from './incomeActions';
+  // debugger
+  // export {
+  //   this.expensesActions,
+  //   this.incomeActions,
+  // };
+
+
+
 // function getUsers(){
 //   fetch('users.json')
 //   .then((res => res.json())
