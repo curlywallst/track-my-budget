@@ -1,0 +1,24 @@
+{
+  "name": "track-my-budget",
+  "version": "1.0.0",
+  "description": "Budget Tracking app",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/curlywallst/track-my-budget.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/curlywallst/track-my-budget/issues"
+  },
+  "homepage": "https://github.com/curlywallst/track-my-budget#readme"
+}
