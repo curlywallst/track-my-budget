@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index.js'
-import { bindActionCreators } from 'redux'
+import {deleteExpenses} from '../actions/index.js'
 
 class ExpensesDelete extends Component {
-  constructor (props) {
-    super(props);
 
-    this.state = {
+    state = {
       id: '',
     };
-  }
 
   handleOnChange = event => {
     this.setState({
@@ -21,7 +17,7 @@ class ExpensesDelete extends Component {
    handleOnSubmit = (event) => {
      event.preventDefault();
      let id = parseInt(this.state.id, 10)
-     this.props.actions.deleteExpenses(id)
+     this.props.deleteExpenses(id)
      this.setState({id: ""})
    }
 
@@ -43,8 +39,4 @@ class ExpensesDelete extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
-
-export default connect(null, mapDispatchToProps)(ExpensesDelete);
+export default connect(null, {deleteExpenses})(ExpensesDelete);

@@ -3,5 +3,6 @@ import expensesReducer from './expenses';
 import incomeReducer from './income'
 
 export default combineReducers({
-  expenses: expensesReducer, income: incomeReducer
+  expensesReducer, 
+  incomeReducer
 });

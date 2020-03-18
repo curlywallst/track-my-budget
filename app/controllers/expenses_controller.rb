@@ -20,17 +20,15 @@ class ExpensesController < ApplicationController
   def update
     expense = Expense.find(expense_params[:id])
     if expense.update(expense_params)
-      render json: Expense.all, status:201
+      render json: expense, status:201
     else
       render json: {}, status: 400
     end
   end
 
   def destroy
-    expense = Expense.find(expense_params[:id])
+    expense = Expense.find(params[:id])
     if expense.delete
-      render json: Expense.all, status: 412
-    else
       render json: { message: "expense deleted", success: 'ok'}
     end
   end

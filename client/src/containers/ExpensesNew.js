@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index.js'
-import { bindActionCreators } from 'redux'
+import{addExpenses} from '../actions/index.js'
 
 class ExpensesNew extends Component {
-  constructor (props) {
-    super(props);
 
-    this.state = {
-      name: '',
-      category: '',
-      monthlyAmount: '',
-      annualAmount: '',
-      id: '',
-    };
-  }
+  state = {
+    name: '',
+    category: '',
+    monthlyAmount: '',
+    annualAmount: '',
+    id: '',
+  };
 
   handleOnChange = event => {
     this.setState({
@@ -31,7 +27,7 @@ class ExpensesNew extends Component {
       monthlyAmount: this.state.monthlyAmount,
       annualAmount: annualAmount,
     }
-    this.props.actions.addExpenses(expenseAttributes);
+    this.props.addExpenses(expenseAttributes);
     this.setState({
       name: '',
       category: '',
@@ -43,7 +39,7 @@ class ExpensesNew extends Component {
   render() {
     return (
       <div>
-        <form  onSubmit={this.handleOnSubmit.bind(this)} >
+        <form  onSubmit={this.handleOnSubmit} >
           <input className="App-form"
             name="name"
             type="text"
@@ -72,8 +68,4 @@ class ExpensesNew extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
-
-export default connect(null, mapDispatchToProps)(ExpensesNew);
+export default connect(null, {addExpenses})(ExpensesNew);

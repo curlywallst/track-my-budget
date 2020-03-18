@@ -13,11 +13,17 @@ Pull requests are welcome on Github at https://github.com/curlywallst/track-my-b
 
 Usage
 
+
+
 To run the application:
 In the terminal:
   $ bundle install
   $ npm install
-  $ rake start
+
+  run main file: rails s -p3001
+  cd into client
+  npm start
+
 
 Dependencies can be found in the package.json file.
 

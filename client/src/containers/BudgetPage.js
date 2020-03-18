@@ -1,27 +1,23 @@
 import React, { Component }  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ExpensesList from '../components/ExpensesList';
 import IncomeList from '../components/IncomeList';
 import ByCategoryList from '../components/ByCategoryList'
 import NetBudget from '../components/NetBudget'
-import * as actions from '../actions/index.js'
-import { bindActionCreators } from 'redux'
+import {fetchExpenses, fetchIncome} from '../actions/index'
+
 
 class BudgetPage extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      expenses: [],
-      income: []
-    }
+  state = {
+    expenses: [],
+    income: []
   }
 
   componentDidMount() {
       console.log('in budget component did mount')
-      this.props.actions.fetchExpenses()
-      this.props.actions.fetchIncome()
+      this.props.fetchExpenses()
+      this.props.fetchIncome()
   }
 
   render() {
@@ -46,15 +42,13 @@ class BudgetPage extends Component {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
+
 
 const mapStateToProps = state => {
   return {
-    expenses: state.expenses,
-    income: state.income
+    expenses: state.expensesReducer.expenses,
+    income: state.incomeReducer.income
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BudgetPage);
+export default connect(mapStateToProps, {fetchExpenses, fetchIncome})(BudgetPage);

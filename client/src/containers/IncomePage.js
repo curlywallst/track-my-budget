@@ -1,23 +1,19 @@
 import React, { Component }  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index.js'
-import { bindActionCreators } from 'redux'
+import {fetchIncome} from '../actions/index.js'
 import IncomeEdit from './IncomeEdit';
 import IncomeList from '../components/IncomeList'
 
 class IncomePage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      income: this.props.income
-    }
+  state = {
+    income: this.props.income
   }
+
 
   componentDidMount() {
       console.log('in income component did mount')
-      this.props.actions.fetchIncome()
+      this.props.fetchIncome()
   }
 
   render() {
@@ -43,14 +39,10 @@ class IncomePage extends Component {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
-
 const mapStateToProps = state => {
   return {
-    income: state.income
+    income: state.incomeReducer.income
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IncomePage);
+export default connect(mapStateToProps, {fetchIncome})(IncomePage);

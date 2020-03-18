@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BudgetAbout = props =>
+const BudgetAbout = () =>
   <div>
     <h2>Welcome to TRACK MY BUDGET</h2>
       <li>Click My Budget to see your current budget including Expenses and Income</li>

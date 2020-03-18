@@ -1,17 +1,27 @@
-export default function incomeReducer(state = [], action){
+export default function incomeReducer(state = {income: []}, action){
   switch (action.type) {
 
     case 'LOADING_INCOME':
-      return state
+      return {
+        ...state
+      }
 
     case 'STOP_LOADING_INCOME':
-      return action.income
+      return {
+        ...state,
+        income: action.income
+      }
 
     case 'EDIT_INCOME':
-      return state;
+      return {
+        ...state
+      }
 
     case 'SUCCESSFULLY_EDITED_INCOME':
-      return action.payload
+      return {
+        ...state,
+        income: action.payload 
+      }
 
 
     default:

@@ -4,6 +4,7 @@ import React from 'react';
 const NetBudget = ({ expenses, income }) => {
 
   var monthlyExpTotal = 0;
+
   if (expenses.length > 0) {
     expenses.forEach(expense => monthlyExpTotal += expense.monthlyAmount)}
 

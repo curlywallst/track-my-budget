@@ -1,11 +1,12 @@
-import fetch from 'isomorphic-fetch';
+
 
 export function fetchExpenses() {
   return function(dispatch){
     dispatch({ type: 'LOADING_EXPENSES' })
     return fetch('/api/expenses')
-      .then(response => {return response.json()})
-      .then(responseJson => {dispatch({ type: 'STOP_LOADING_EXPENSES', payload: responseJson })});
+      .then(response => response.json())
+      .then(data => {
+        return dispatch({ type: 'STOP_LOADING_EXPENSES', payload: data })});
     }
   };
 
@@ -65,15 +66,9 @@ export function fetchExpenses() {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id: id
-        })
+        }
       })
-      .then((res) => res.json())
-      .then((responseJson) => {dispatch({ type: 'SUCCESSFULLY_DELETED_EXPENSE', payload: responseJson})
-        return responseJson;
-      })
+      .then(dispatch({ type: 'SUCCESSFULLY_DELETED_EXPENSE', payload: id}))
     }
   }
 

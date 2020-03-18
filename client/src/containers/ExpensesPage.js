@@ -5,21 +5,17 @@ import ExpensesList from '../components/ExpensesList';
 import ExpensesNew from './ExpensesNew';
 import ExpensesEdit from './ExpensesEdit';
 import ExpensesDelete from './ExpensesDelete'
-import * as actions from '../actions/index.js'
-import { bindActionCreators } from 'redux'
+import {fetchExpenses} from '../actions/index'
+
 
 class ExpensesPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
+  state = {
       expenses: []
-    }
   }
-
+  
   componentDidMount() {
       console.log('in expenses component did mount')
-      this.props.actions.fetchExpenses()
+      this.props.fetchExpenses()
   }
 
   render() {
@@ -52,14 +48,11 @@ class ExpensesPage extends Component {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
-
 const mapStateToProps = state => {
+  console.log('This is the state in Expenses Page:',state)
   return {
-    expenses: state.expenses
+    expenses: state.expensesReducer.expenses
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpensesPage);
+export default connect(mapStateToProps, {fetchExpenses})(ExpensesPage);

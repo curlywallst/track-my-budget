@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index.js'
-import { bindActionCreators } from 'redux'
-
+import {editIncome} from '../actions/index.js'
 
 class IncomeEdit extends Component {
-  constructor (props) {
-    super(props);
 
-    this.state = {
-      earnedIncome: '',
-      netInvestedAssets: '',
-      taxRate: '',
-      roi: '',
-    };
-  }
+  state = {
+    earnedIncome: '',
+    netInvestedAssets: '',
+    taxRate: '',
+    roi: '',
+  };
 
   handleOnChange = event => {
     this.setState({
@@ -30,7 +25,7 @@ class IncomeEdit extends Component {
     if (this.state.taxRate !== "") {incomeAttributes['taxRate'] = this.state.taxRate}
     if (this.state.roi !== "") {incomeAttributes['roi'] = this.state.roi}
 
-    this.props.actions.editIncome(incomeAttributes);
+    this.props.editIncome(incomeAttributes);
 
     this.setState({
       earnedIncome: '',
@@ -83,8 +78,4 @@ class IncomeEdit extends Component {
   } else {return null}}
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
-
-export default connect(null, mapDispatchToProps)(IncomeEdit);
+export default connect(null, {editIncome})(IncomeEdit);
